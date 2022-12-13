@@ -1,0 +1,73 @@
+@import '/src/index.scss';
+
+.navigation {
+    min-width: 25rem;
+    min-height: 100vh;
+    position: relative;
+
+    &::after {
+        top: 0;
+        right: 0;
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 1px;
+        box-shadow: inset 0 0 2px $primary_shadow;
+    }
+
+    .navigation__top {
+        padding: $space_big;
+    }
+
+    .navigation__menu {
+        position: relative;
+
+        .navigation__title {
+            padding: 0 $space_big;
+            color: $secondary_element_color;
+        }
+
+        .navigation__item {
+            padding: $space $space_big;
+            display: flex;
+            align-items: center;
+            gap: $space;
+
+            a, svg {
+                color: $secondary_element_color;
+            }
+
+            svg {
+                font-size: 1.6rem;
+            }
+
+            a {
+                font-size: 1.4rem;
+                font-weight: 600;
+            }
+
+            &.--active {
+                
+                svg {
+                    color: $primary_element_color;
+                }
+
+                a {
+                    color: $tretiary_element_color;
+                }
+            }
+        }
+
+        .navigation__line {
+            position: absolute;
+            content: '';
+            top: 0;
+            width: 4px;
+            height: 2rem;
+            background-color: $primary_element_color;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 0 0 1rem $primary_element_color;
+            transition: all .4s ease-in;
+        }
+    }
+}

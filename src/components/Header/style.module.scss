@@ -1,0 +1,113 @@
+@import '/src/index.scss';
+
+header {
+    padding: $space_big;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .header__buttons {
+        display: flex;
+        align-items: center;
+
+        button {
+            height: 5rem;
+            width: 5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: $secondary_element_color;
+            border-radius: $space;
+            transition: all .2s linear;
+    
+            &:hover {
+                // box-shadow: 0 0 4rem $primary_shadow;
+                color: $tretiary_element_color;
+            }
+        }
+    }
+
+    %header-group_styles {
+        display: flex;
+        align-items: center;
+        gap: $space;
+    }
+
+    .navigate {
+        @extend %header-group_styles;
+
+        .navigate__search {
+            position: relative;
+
+            svg {
+                position: absolute;
+                font-size: 1.5rem;
+                color: $secondary_element_color;
+                top: 50%;
+                transform: translateY(-50%);
+                left: $space;
+            }
+
+            input {
+                height: 5rem;
+                color: $secondary_element_color;
+                border-radius: $space;
+                border: 2px solid $secondary_element_color;
+                min-width: 30rem;
+                padding: 0 $space + 1.5rem + $space;
+
+                &::placeholder {
+                    color: $secondary_element_color;
+                    letter-spacing: .5px;
+                }
+            }
+        }
+    }
+
+    .profile {
+        @extend %header-group_styles;
+
+        .authorized {
+            @extend %header-group_styles;
+            gap: 1rem;
+
+            .avatar {
+                height: 5rem;
+                width: 5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid $tretiary_element_color;
+                border-radius: 50%;
+
+                .avatar__inside {
+                    position: relative;
+                    height: 4rem;
+                    width: 4rem;
+                    border-radius: 50%;
+                    overflow: hidden;
+    
+                    img {
+                        width: 100%;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+
+            .authorized__info {
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                .authorized__name {
+                    font-weight: 600;
+                    font-size: 1.3rem;
+                }
+            }
+        }
+    }
+}
