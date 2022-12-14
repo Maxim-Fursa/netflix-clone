@@ -17,13 +17,14 @@
 
     .navigation__top {
         padding: $space_big;
+        padding-bottom: 0;
     }
 
     .navigation__menu {
         position: relative;
 
         .navigation__title {
-            padding: 0 $space_big;
+            padding: $space_big $space_big .5rem;
             color: $secondary_element_color;
         }
 

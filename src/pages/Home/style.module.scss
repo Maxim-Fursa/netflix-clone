@@ -10,6 +10,7 @@
         position: relative;
         border-radius: $space * 2;
         overflow: hidden;
+        margin-bottom: $space_big;
 
         &::after {
             content: '';
@@ -102,8 +103,7 @@
     }
 
     .chapter {
-        margin-top: $space_big;
-
+        
         .chapter__name {
             color: $tretiary_element_color;
             font-weight: 600;
@@ -113,57 +113,24 @@
 
         .chapter__content {
             padding: $space $space_big;
-            display: flex;
-            overflow: auto;
             gap: $space;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
             height: fit-content;
+
+            &.--scroll {
+                display: flex;
+                overflow: auto;
+
+                .item {
+                    width: 20rem;
+                }
+            }
 
             &::-webkit-scrollbar {
                 height: 0;
                 width: 0;
-            }
-
-            .chapter__item {
-                min-width: 20rem;
-                width: 20rem;
-                transition: all .1s linear;
-                cursor: pointer;
-                height: fit-content;
-                border-radius: $space;
-                overflow: hidden;
-
-                &:hover {
-                    box-shadow: 0 0 3rem $primary_shadow;
-                }
-
-                img {
-                    width: 100%;
-                    margin-bottom: -3px;
-                }
-
-                .watched {
-                    height: 3px;
-                    width: 100%;
-                    background-color: $secondary_element_color;
-
-                    .watched__line {
-                        background-color: $primary_element_color;
-                        height: 100%;
-                    }
-                }
-
-                .info {
-                    padding: $space;
-                    background-color: #fff;
-
-                    .info__name {
-                        color: $tretiary_element_color;
-                        font-weight: 600;
-                        font-size: 1.4rem;
-                        margin-bottom: 5px;
-                    }
-                }
-            }
+            }            
         }
     }
 }

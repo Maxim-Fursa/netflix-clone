@@ -1,26 +1,33 @@
-import { HomePage } from "../pages"
-import { faCompass } from '@fortawesome/free-solid-svg-icons'
-import { faHeart, faCalendar } from '@fortawesome/free-regular-svg-icons'
+import { Home, Preview } from "../pages"
+import { faCompass, faGear, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faCalendar, faUser } from '@fortawesome/free-regular-svg-icons'
 
-export enum Path {
+export enum RouteNames {
     HOME = "/",
     WISHLIST = '/wishlist',
-    COMMING = '/comming-soon'
+    COMMING = '/comming-soon',
+    FRIENDS = '/friends',
+    PARTIES = '/parties',
+    SETTINGS = '/settings',
+    PREVIEW = '/',
 }
 
 interface IRoutes {
     path: string,
     elem: React.ComponentType,
-    icon: typeof faCompass,
-    title: string
+    icon?: typeof faCompass,
+    title?: string
 }
 
 export const publicRoutes: IRoutes[] = [
-    {path: Path.HOME, elem: HomePage, icon: faCompass, title: 'Browse'},
-    {path: Path.WISHLIST, elem: HomePage, icon: faHeart, title: 'Wishlist'},
-    {path: Path.COMMING, elem: HomePage, icon: faCalendar, title: 'Comming soon'}
+    {path: RouteNames.HOME, elem: Preview},
 ]
 
 export const privateRotues: IRoutes[] = [
-    {path: Path.HOME, elem: HomePage, icon: faCompass, title: 'Browse'}
+    {path: RouteNames.HOME, elem: Home, icon: faCompass, title: 'Browse'},
+    {path: RouteNames.WISHLIST, elem: Home, icon: faHeart, title: 'Wishlist'},
+    {path: RouteNames.COMMING, elem: Home, icon: faCalendar, title: 'Comming soon'},
+    {path: RouteNames.FRIENDS, elem: Home, icon: faUser, title: 'Friends'},
+    {path: RouteNames.PARTIES, elem: Home, icon: faUserGroup, title: 'Parties'},
+    {path: RouteNames.SETTINGS, elem: Home, icon: faGear, title: 'Settings'}
 ]

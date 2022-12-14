@@ -36,9 +36,13 @@ header {
 
     .navigate {
         @extend %header-group_styles;
+        flex: 1;
 
         .navigate__search {
             position: relative;
+            max-width: 60rem;
+            width: 100%;
+            z-index: 4;
 
             svg {
                 position: absolute;
@@ -56,12 +60,67 @@ header {
                 border: 2px solid $secondary_element_color;
                 min-width: 30rem;
                 padding: 0 $space + 1.5rem + $space;
+                z-index: 5;
+                background-color: $content_color;
 
                 &::placeholder {
                     color: $secondary_element_color;
                     letter-spacing: .5px;
                 }
+
+                &.--focus {
+                    width: 100%;
+                    border-radius: 1rem 1rem 0 0;
+                    border-bottom: none;
+                }
             }
+
+            .navigate__results {
+                min-height: 5rem;
+                max-height: 30rem;
+                width: 100%;
+                border-radius: 0 0 1rem 1rem;
+                border: 2px solid $secondary_element_color;
+                border-top: none;
+                background-color: $content_color;
+                position: absolute;
+                top: 100%;
+                overflow: auto;
+
+                .navigate__query {
+                    margin: 2.5rem 0 0 1.5rem;
+                    transform: translateY(-50%);
+                    font-size: 1.3rem;
+                    color: $secondary_element_color;
+                }
+
+                ul {
+                    overflow: hidden;
+
+                    li {
+                        padding: 1.5rem;
+                        font-size: 1.4rem;
+                        text-transform: capitalize;
+                        cursor: pointer;
+                        color: $tretiary_element_color;
+
+                        &:hover {
+                            background: $secondary_element_color--hover;
+                        }
+                    }
+                }
+            }
+        }
+
+        .navigate__layer {
+            z-index: 3;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: $tretiary_element_color;
+            opacity: .8;
         }
     }
 

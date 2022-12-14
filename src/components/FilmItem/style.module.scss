@@ -1,0 +1,42 @@
+@import '/src/index.scss';
+
+.item {
+    min-width: 20rem;
+    transition: all .1s linear;
+    cursor: pointer;
+    height: fit-content;
+    border-radius: $space;
+    overflow: hidden;
+
+    &:hover {
+        box-shadow: 0 0 3rem $primary_shadow;
+    }
+
+    img {
+        width: 100%;
+        margin-bottom: -3px;
+    }
+
+    .item__watched {
+        height: 3px;
+        width: 100%;
+        background-color: $secondary_element_color;
+
+        .item__line {
+            background-color: $primary_element_color;
+            height: 100%;
+        }
+    }
+
+    .item__info {
+        padding: $space;
+        background-color: #fff;
+
+        .item__name {
+            color: $tretiary_element_color;
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+    }
+}

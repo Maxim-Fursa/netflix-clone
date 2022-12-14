@@ -1,11 +1,11 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
-import { Header } from '../../components'
+import { FilmItem, HighlightButton } from '../../components'
 import style from './style.module.scss'
 import { axiosRequest } from '../../api'
-import Continue from './Continue'
 
 interface IItems {
     id: number,
@@ -37,7 +37,6 @@ const Home: React.FC = () => {
 
     return (
         <div className="home-container">
-            <Header/>
             <div className={style['home-container__content']}>
                 {
                     items && continueWatching ? (
@@ -47,13 +46,13 @@ const Home: React.FC = () => {
                                 <div className={style.info}>
                                     <p className={style.info__xp}>10XP / episode</p>
                                     <div className={style.info__main}>
-                                        <p className={style.info__name}>{items[0].name}</p>
+                                        <p className={style.info__name}>{items[0].name || items[0].title}</p>
                                         <div className={style.info__group}>
                                             <p className={style.info__add}>{items[0].vote_average.toFixed(2)} / 10</p>
                                             <p className={style.info__add}>1 season</p>
                                         </div>
                                         <div className={style.info__group}>
-                                            <button className={style.info__watch}>Watch</button>
+                                            <Link to={`/film/${items[0].id}`}><HighlightButton>Watch</HighlightButton></Link>
                                             <button className={style.info__wish}><FontAwesomeIcon icon={faPlus}/></button>
                                         </div>
                                     </div>
@@ -61,12 +60,30 @@ const Home: React.FC = () => {
                             </div>
                             <div className={style.chapter}>
                                 <div className={style.chapter__name}>Continue watching</div>
-                                <div className={style.chapter__content}>
+                                <div className={`${style.chapter__content} ${style['--scroll']}`}>
                                     {continueWatching.map(el => 
-                                        <Continue 
+                                        <FilmItem 
+                                            key={el.id}
+                                            id={el.id}
                                             name={el.title || el.name} 
                                             backdrop_path={el.backdrop_path} 
                                             vote_average={el.vote_average} 
+                                            isWatched={true}
+                                        />    
+                                    )}
+                                </div>
+                            </div>
+                            <div className={style.chapter}>
+                                <div className={style.chapter__name}>Trending</div>
+                                <div className={style.chapter__content}>
+                                    {items.map(el => 
+                                        <FilmItem 
+                                            key={el.id}
+                                            id={el.id}
+                                            name={el.title || el.name} 
+                                            backdrop_path={el.backdrop_path} 
+                                            vote_average={el.vote_average} 
+                                            isWatched={false}
                                         />    
                                     )}
                                 </div>

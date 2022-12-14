@@ -4,7 +4,9 @@ $space_big: 3rem;
 $content_color: #F8F9FF;
 
 $primary_element_color: #D91F27;
+$primary_element_color--hover: #b81b23;
 $secondary_element_color: #819BB2;
+$secondary_element_color--hover: #dde5eb;
 $tretiary_element_color: #314255;
 
 $primary_shadow: #d8dae5;
@@ -18,6 +20,22 @@ $primary_shadow: #d8dae5;
     box-sizing: border-box;
     font-family: 'Montserrat';
     font-weight: 400;
+
+    &::-webkit-scrollbar {
+        width: 1rem;
+        height: 1rem;
+    }   
+
+    &::-webkit-scrollbar-thumb {
+        background: $secondary_element_color;
+        border-radius: $space;
+        border: 3px solid transparent;
+        background-clip: content-box;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
 }
 
 html {
