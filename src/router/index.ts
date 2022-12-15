@@ -12,18 +12,23 @@ export enum RouteNames {
     PREVIEW = '/',
 }
 
-interface IRoutes {
+interface IPublicRoutes {
     path: string,
-    elem: React.ComponentType,
-    icon?: typeof faCompass,
-    title?: string
+    elem: React.ComponentType
 }
 
-export const publicRoutes: IRoutes[] = [
+interface IPrivateRoutes {
+    path: string,
+    elem: React.ComponentType,
+    icon: typeof faCompass,
+    title: string
+}
+
+export const publicRoutes: IPublicRoutes[] = [
     {path: RouteNames.HOME, elem: Preview},
 ]
 
-export const privateRotues: IRoutes[] = [
+export const privateRotues: IPrivateRoutes[] = [
     {path: RouteNames.HOME, elem: Home, icon: faCompass, title: 'Browse'},
     {path: RouteNames.WISHLIST, elem: Home, icon: faHeart, title: 'Wishlist'},
     {path: RouteNames.COMMING, elem: Home, icon: faCalendar, title: 'Comming soon'},
