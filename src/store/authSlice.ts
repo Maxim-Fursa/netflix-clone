@@ -12,9 +12,9 @@ const AuthState = createSlice({
     name: 'AuthState',
     initialState,
     reducers: {
-        login: (state) => {
+        login: (state, action) => {
             state.isAuth = true
-            localStorage.setItem('auth', 'true')
+            localStorage.setItem('auth', JSON.stringify(action.payload))
         },
         logout: (state) => {
             state.isAuth = false

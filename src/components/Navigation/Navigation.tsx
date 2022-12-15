@@ -1,15 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { getAuth, signOut } from "firebase/auth";
+import classNames from 'classnames'
 
 import style from './style.module.scss'
 import { privateRotues } from '../../router'
-import classNames from 'classnames'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { logout } from '../../store/authSlice'
+import Authorized from '../Authorized/Authorized';
 
 const Navigation: React.FC = () => {
     const [active, setActive] = React.useState<string>('/')
+    const dispatch = useAppDispatch()
     const names = {0: 'Menu', 3: 'Social', 5: 'General'}
     const line = React.useRef<any>()
+    const dimensions = useAppSelector(state => state.dimensions)
+
+    const appliactionLogout = () => {
+        const auth = getAuth()
+        signOut(auth).then(() => {
+            dispatch(logout())
+        })   
+    }
 
     React.useEffect(() => {
         if (line) {
@@ -38,8 +52,13 @@ const Navigation: React.FC = () => {
                         </li>
                     </React.Fragment>
                 )}
+                <li className={style.navigation__item} onClick={appliactionLogout}>
+                    <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                    <Link to={'/'}>Logout</Link>
+                </li>
                 <li ref={line} className={style.navigation__line}></li>
             </ul>
+            { dimensions.width <= 735 && <Authorized/> }
         </div>
     )
 }

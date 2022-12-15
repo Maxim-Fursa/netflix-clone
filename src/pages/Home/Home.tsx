@@ -39,22 +39,19 @@ const Home: React.FC = () => {
         <div className="home-container">
             <div className={style['home-container__content']}>
                 {
-                    items && continueWatching ? (
+                    items && continueWatching && (
                         <React.Fragment>
-                            <div className={style['trend-film']}>
-                                <img src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${items[0].poster_path}`} alt="" />
-                                <div className={style.info}>
-                                    <p className={style.info__xp}>10XP / episode</p>
-                                    <div className={style.info__main}>
-                                        <p className={style.info__name}>{items[0].name || items[0].title}</p>
-                                        <div className={style.info__group}>
-                                            <p className={style.info__add}>{items[0].vote_average.toFixed(2)} / 10</p>
-                                            <p className={style.info__add}>1 season</p>
-                                        </div>
-                                        <div className={style.info__group}>
-                                            <Link to={`/film/${items[0].id}`}><HighlightButton>Watch</HighlightButton></Link>
-                                            <button className={style.info__wish}><FontAwesomeIcon icon={faPlus}/></button>
-                                        </div>
+                            <div className={style.poster} style={{backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${items[0].poster_path})`}}>
+                                <p className={style.poster__xp}>10XP / episode</p>
+                                <div className={style.poster__main}>
+                                    <p className={style.poster__name}>{items[0].name || items[0].title}</p>
+                                    <div className={style.poster__group}>
+                                        <p className={style.poster__add}>{items[0].vote_average.toFixed(2)} / 10</p>
+                                        <p className={style.poster__add}>1 season</p>
+                                    </div>
+                                    <div className={style.poster__group}>
+                                        <Link to={`/film/${items[0].id}`}><HighlightButton>Watch</HighlightButton></Link>
+                                        <button className={style.poster__wish}><FontAwesomeIcon icon={faPlus}/></button>
                                     </div>
                                 </div>
                             </div>
@@ -89,8 +86,6 @@ const Home: React.FC = () => {
                                 </div>
                             </div>
                         </React.Fragment>
-                    ) : (
-                        <p>Loading</p>
                     )
                 }
             </div>

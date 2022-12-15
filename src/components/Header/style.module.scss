@@ -41,7 +41,7 @@ header {
         .navigate__search {
             position: relative;
             max-width: 60rem;
-            width: 100%;
+            width: fit-content;
             z-index: 4;
 
             svg {
@@ -50,15 +50,15 @@ header {
                 color: $secondary_element_color;
                 top: 50%;
                 transform: translateY(-50%);
-                left: $space;
+                left: 1.8rem;
             }
 
             input {
                 height: 5rem;
+                width: 100%;
                 color: $secondary_element_color;
                 border-radius: $space;
                 border: 2px solid $secondary_element_color;
-                min-width: 30rem;
                 padding: 0 $space + 1.5rem + $space;
                 z-index: 5;
                 background-color: $content_color;
@@ -67,11 +67,29 @@ header {
                     color: $secondary_element_color;
                     letter-spacing: .5px;
                 }
+            }
+
+            @media screen and (max-width: 530px) {       
+                width: fit-content;
+
+                input {
+                    padding: 0 0;
+                    border-radius: 50%;
+                    width: 5rem;
+
+                    &::placeholder {
+                        color: #fff;
+                    }
+                }
 
                 &.--focus {
-                    width: 100%;
-                    border-radius: 1rem 1rem 0 0;
-                    border-bottom: none;
+                    position: absolute;
+                    width: calc(100% - $space_big * 2) !important;
+
+                    input {
+                        width: 100%;
+                        padding: 0 $space + 1.5rem + $space;
+                    }
                 }
             }
 
@@ -110,6 +128,15 @@ header {
                     }
                 }
             }
+
+            &.--focus {
+                width: 100%;
+
+                input {
+                    border-radius: 1rem 1rem 0 0;
+                    border-bottom: none;
+                }
+            }
         }
 
         .navigate__layer {
@@ -126,47 +153,5 @@ header {
 
     .profile {
         @extend %header-group_styles;
-
-        .authorized {
-            @extend %header-group_styles;
-            gap: 1rem;
-
-            .avatar {
-                height: 5rem;
-                width: 5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 2px solid $tretiary_element_color;
-                border-radius: 50%;
-
-                .avatar__inside {
-                    position: relative;
-                    height: 4rem;
-                    width: 4rem;
-                    border-radius: 50%;
-                    overflow: hidden;
-    
-                    img {
-                        width: 100%;
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                    }
-                }
-            }
-
-            .authorized__info {
-                display: flex;
-                flex-direction: column;
-                gap: .5rem;
-
-                .authorized__name {
-                    font-weight: 600;
-                    font-size: 1.3rem;
-                }
-            }
-        }
     }
 }

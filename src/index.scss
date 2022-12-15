@@ -11,7 +11,6 @@ $tretiary_element_color: #314255;
 
 $primary_shadow: #d8dae5;
 
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
@@ -72,10 +71,39 @@ a {
 
 .app-container {
     display: flex;
+    height: 100vh;
 
     .app-container__content {
+        background-color: $content_color;
         overflow: auto;
-        height: 100vh;
+        z-index: 1;
         flex: 1;
+        transition: all .3s ease-in;
+
+        &.--open {
+            position: fixed; 
+            overflow: hidden;
+            border-radius: $space;
+            box-shadow: 0 0 4rem $primary_shadow;
+            top: 6rem;
+            left: 25rem;
+
+            .trend-film img {
+                left: 10%;
+            }
+        }
     }
+
+    .big-word {
+        width: 100%;
+        text-align: center;
+        margin: auto 0;
+    }
+}
+
+.big-word {
+    font-size: 18vw;
+    font-weight: 900;
+    color: $secondary_element_color;
+    opacity: .1;
 }

@@ -1,0 +1,50 @@
+@import '/src/index.scss';
+
+.authorized {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .avatar {
+        height: 5rem;
+        width: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid $tretiary_element_color;
+        border-radius: 50%;
+
+        .avatar__inside {
+            position: relative;
+            height: 4rem;
+            width: 4rem;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    .authorized__info {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+
+        .authorized__name {
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .authorized {
+        margin: auto 0 $space $space;
+    }
+}

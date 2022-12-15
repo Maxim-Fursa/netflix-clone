@@ -3,6 +3,7 @@
 .preview-container {
     background-image: url(https://occ-0-256-2568.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABWLqqfIxOhGGjSyegfImujv6mz09DyEV5Qi-SSSH_KtcICTPpu2YosnVhIGTjbXO94Sx7irIIuq2-U-FKdXH1cv-S949lIHrdMCc.jpg?r=93a);
     background-size: cover;
+    background-position: right;
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -36,6 +37,19 @@
 
         button {
             margin-top: 3rem;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    
+    .preview-container {
+        background-position-x: -90rem;
+
+        .poster {
+            padding: 0 2rem;
+            width: 100%;
+            margin-left: 0;
         }
     }
 }

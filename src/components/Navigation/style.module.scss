@@ -4,6 +4,8 @@
     min-width: 25rem;
     min-height: 100vh;
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     &::after {
         top: 0;
@@ -69,6 +71,18 @@
             border-radius: 0 5px 5px 0;
             box-shadow: 0 0 1rem $primary_element_color;
             transition: all .4s ease-in;
+        }
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    
+    .navigation {
+        width: 100%;
+        position: fixed;
+
+        &::after {
+            display: none;
         }
     }
 }

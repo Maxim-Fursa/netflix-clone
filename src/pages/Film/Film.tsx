@@ -6,7 +6,7 @@ const Film: React.FC = () => {
     return (
         <div className={style['film-container']}>
             <div className={style.oops}>
-                <h2>OOPS</h2>
+                <h2 className={style['big-word']}>OOPS</h2>
                 <p>Sorry, you haven't subscription to watch this movie</p>
                 <HighlightButton>Buy subscription</HighlightButton>
             </div>

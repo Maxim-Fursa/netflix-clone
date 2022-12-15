@@ -13,8 +13,8 @@ const Preview: React.FC = () => {
     const authentification = () => {
         const auth = getAuth()
         const provider = new GoogleAuthProvider()
-        signInWithPopup(auth, provider).then(() => {
-            dispatch(login())
+        signInWithPopup(auth, provider).then(({ user }) => {
+            dispatch(login(user))
         })   
     }
 

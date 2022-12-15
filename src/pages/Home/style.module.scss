@@ -2,15 +2,23 @@
 
 .home-container__content {
     padding-bottom: $space_big;
+    background-color: $content_color;
 
-    .trend-film {
+    .poster {
         margin: 0 $space_big;
         width: calc(100% - $space_big * 2);
         height: 40rem;
-        position: relative;
         border-radius: $space * 2;
-        overflow: hidden;
         margin-bottom: $space_big;
+        padding: $space_big;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
 
         &::after {
             content: '';
@@ -23,81 +31,53 @@
         }
 
         img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(0%, -30%);
         }
 
-        .info {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            padding: $space_big;
-            z-index: 2;
+        .poster__xp {
+            background: rgba(255, 255, 255, 0.519);
+            color: $tretiary_element_color;
+            padding: .5rem 1rem;
+            border-radius: $space;
+            width: fit-content;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .poster__main {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            gap: $space;
+            z-index: 1;
 
-            .info__xp {
-                background: rgba(255, 255, 255, 0.519);
-                color: $tretiary_element_color;
-                padding: .5rem 1rem;
-                border-radius: $space;
-                width: fit-content;
-                font-weight: 600;
+            .poster__name {
+                color: #fff;
+                font-weight: 700;
+                font-size: 5rem;
             }
 
-            .info__main {
+            .poster__group {
                 display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+                align-items: center;
                 gap: $space;
+            }
 
-                .info__name {
-                    color: #fff;
-                    font-weight: 700;
-                    font-size: 5rem;
-                }
+            .poster__add {
+                color: rgba(255, 255, 255, 0.65);
+                font-size: 1.3rem;
+            }
 
-                .info__group {
-                    display: flex;
-                    align-items: center;
-                    gap: $space;
-                }
-
-                .info__add {
-                    color: rgba(255, 255, 255, 0.65);
-                    font-size: 1.3rem;
-                }
-
-                .info__watch {
-                    background: $primary_element_color;
-                    height: 5rem;
-                    width: 10rem;
-                    border-radius: $space;
-                    color: #fff;
-                    border: none;
-                    font-weight: 600;
-                    transition: all .2s linear;
-                    cursor: pointer;
-
-                    &:hover {
-                        box-shadow: 0 0 3rem $primary_element_color;
-                    }
-                }
-
-                .info__wish {
-                    height: 5rem;
-                    width: 5rem;
-                    border: none;
-                    border-radius: $space;
-                    background-color: rgba(255, 255, 255, 0.65);
-                    backdrop-filter: blur(.5rem);
-                    color: #fff;
-                    font-size: 2rem;
-                    cursor: pointer;
-                }
+            .poster__wish {
+                height: 5rem;
+                width: 5rem;
+                border: none;
+                border-radius: $space;
+                background-color: rgba(255, 255, 255, 0.65);
+                backdrop-filter: blur(.5rem);
+                color: #fff;
+                font-size: 2rem;
+                cursor: pointer;
             }
         }
     }
